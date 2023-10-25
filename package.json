@@ -1,0 +1,8 @@
+{
+  "name": "@xevent/monorepo",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "pnpm -r --parallel --filter \"@xevent/test...\" run dev"
+  }
+}

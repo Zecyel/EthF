@@ -1,0 +1,13 @@
+{
+  "name": "@xevent/test",
+  "version": "0.0.0",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --open"
+  },
+  "dependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0"
+  }
+}
