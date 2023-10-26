@@ -1,10 +1,13 @@
-export class Context<T> {
+export const CurrentValue = Symbol('CurrentValue')
 
-  private current_value: T
-  public $data: { [key: symbol]: any } = {}
+export class Context {
 
-  get $(): T {
-    return this.current_value
+  public $data: { [key: symbol]: any } = {
+    [CurrentValue]: null
+  }
+
+  get $(): any {
+    return this.$data[CurrentValue]
   }
 
 }
