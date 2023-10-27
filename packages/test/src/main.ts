@@ -1,4 +1,4 @@
-import { Environment, Context, Trigger, Listener } from 'xevent'
+import { Trigger } from 'xevent'
 
 // let env = new Environment(new Context())
 
@@ -15,8 +15,8 @@ let ev = new Trigger((e) => {
         })
 })
 
-ev.addListener(new Listener((env) => {
+ev.next((env) => {
     env.next((_) => {
         console.log(_.$.x, _.$.y)
     }).next((_) => 123).debug()
-}))
+})
