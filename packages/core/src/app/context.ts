@@ -11,3 +11,5 @@ export class Context {
   }
 
 }
+
+export const view = (foo: (_: Context) => any) => foo
