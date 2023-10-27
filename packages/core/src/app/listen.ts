@@ -1,18 +1,20 @@
+import { Context, CurrentValue } from "./context"
+import { Environment } from "./env"
 import { MiddleWare } from "./middleware"
 
 export class Listener<EventType> {
-    // constructor (preOper: (e: Context))
+    constructor (private oper: (env: Environment) => any) {}
 
     trigger(ev: EventType): void {
-
-    }
-    next(m: MiddleWare) {
-        
+        let ctx = new Context()
+        let env = new Environment(ctx)
+        ctx.$data[CurrentValue] = ev
+        this.oper(env)
     }
 }
 
-export class Event<EventType> {
-    listener: Listener<EventType>[]
+export class Trigger<EventType> {
+    listener: Listener<EventType>[] = []
     constructor (binder: (cb: (ev: EventType) => void) => void) {
         binder((ev: EventType) => { this.trigger(ev) })
     }
