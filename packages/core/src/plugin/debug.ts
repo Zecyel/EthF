@@ -1,5 +1,5 @@
-import { Environment } from "../app";
-import { applyMixin } from "../util";
+import { Environment } from "../app"
+import { applyMixin } from "../util"
 
 class Debug extends Environment {
     debug(): Environment {

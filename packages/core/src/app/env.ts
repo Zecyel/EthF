@@ -1,12 +1,12 @@
-import { Context, CurrentValue } from "./context";
-import { MiddleWare } from "./middleware";
+import { Context } from "./context"
+import { MiddleWare } from "./middleware"
 
 export class Environment {
 
     constructor(public context: Context) {}
 
     next(op: MiddleWare): Environment {
-        this.context.$data[CurrentValue] = op(this.context)
+        this.context.$ = op(this.context)
         return this
     }
 }

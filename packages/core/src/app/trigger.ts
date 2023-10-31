@@ -1,4 +1,4 @@
-import { Context, CurrentValue } from "./context"
+import { Context } from "./context"
 import { Environment } from "./env"
 
 type Listener = (env: Environment) => any
@@ -17,7 +17,7 @@ export class Trigger {
         for (let i of this.listener) {
             let ctx = new Context()
             let env = new Environment(ctx)
-            ctx.$data[CurrentValue] = ev
+            ctx.$ = ev
             i(env)
         }
     }
