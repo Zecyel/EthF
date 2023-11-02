@@ -15,3 +15,11 @@ export class XCore<T> {
 export class XPlugin<T> {
     constructor (public plugin: (base: Ctor<T>) => Ctor<T>) {}
 }
+
+export function createInstance<T>(core: XCore<T>, base: Ctor<T>, plugins: XPlugin<T>[]): T {
+    let inst = new XCore<T>(base)
+    for (let plg of plugins) {
+        inst.apply(plg)
+    }
+    return new (inst.get())
+}
