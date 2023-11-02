@@ -17,8 +17,7 @@
     }
   },
   "scripts": {
-    "build": "tsc",
-    "publish": "npm publish --access=public"
+    "build": "tsc"
   },
   "dependencies": {
     "typescript": "^5.2.2"
