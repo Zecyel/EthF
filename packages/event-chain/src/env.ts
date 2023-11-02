@@ -1,4 +1,4 @@
-import { AppPlugin, XCore, XPlugin, createInstance } from "@xevent/core"
+import { AppPlugin, XCore, XPlugin, createInstance } from "@ethf/core"
 
 export class EnvironmentBase {}
 
@@ -18,7 +18,7 @@ let useEnvironment = new AppPlugin(
     }
 )
 
-declare module '@xevent/core' {
+declare module '@ethf/core' {
     interface AppBase {
         
     }

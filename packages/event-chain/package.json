@@ -1,5 +1,5 @@
 {
-  "name": "@xevent/event-chain",
+  "name": "@ethf/event-chain",
   "version": "0.0.0",
   "files": [
     "src"
@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "typescript": "^5.2.2",
-    "@xevent/core": "workspace:^"
+    "@ethf/core": "workspace:^"
   }
 }

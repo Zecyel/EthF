@@ -1,5 +1,5 @@
 {
-  "name": "@xevent/test",
+  "name": "@ethf/test",
   "version": "0.0.0",
   "type": "module",
   "license": "MIT",
@@ -9,6 +9,6 @@
   "dependencies": {
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
-    "@xevent/core": "workspace:^"
+    "@ethf/core": "workspace:^"
   }
 }

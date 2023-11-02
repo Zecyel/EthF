@@ -16,7 +16,7 @@ importers:
 
   packages/event-chain:
     dependencies:
-      '@xevent/core':
+      '@ethf/core':
         specifier: workspace:^
         version: link:../core
       typescript:
@@ -25,7 +25,7 @@ importers:
 
   packages/test:
     dependencies:
-      '@xevent/core':
+      '@ethf/core':
         specifier: workspace:^
         version: link:../core
       typescript:

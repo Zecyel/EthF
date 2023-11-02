@@ -1,4 +1,4 @@
-import { App, AppBase, AppPlugin, createApp } from "@xevent/core"
+import { App, AppBase, AppPlugin, createApp } from "@ethf/core"
 
 let plugin1 = new AppPlugin(
     (base) => class extends base {
@@ -9,7 +9,7 @@ let plugin1 = new AppPlugin(
     }
 )
 
-declare module '@xevent/core' {
+declare module '@ethf/core' {
     interface AppBase {
         c: number
         debugC(): void
@@ -25,7 +25,7 @@ let plugin2 = new AppPlugin(
     }
 )
 
-declare module '@xevent/core' {
+declare module '@ethf/core' {
     interface AppBase {
         d: number
         debugD(): void
