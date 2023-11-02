@@ -14,17 +14,26 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
+  packages/event-chain:
+    dependencies:
+      '@xevent/core':
+        specifier: workspace:^
+        version: link:../core
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
   packages/test:
     dependencies:
+      '@xevent/core':
+        specifier: workspace:^
+        version: link:../core
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
       vite:
         specifier: ^4.5.0
         version: 4.5.0
-      xevent:
-        specifier: workspace:^
-        version: link:../core
 
 packages:
 

@@ -1,6 +1,6 @@
 import { XCore, XPlugin } from "./plugin"
 
-class AppBase {}
+export class AppBase {}
 
 export const App = XCore<AppBase>
 export type App = XCore<AppBase>
