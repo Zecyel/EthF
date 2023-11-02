@@ -1,9 +1,8 @@
 {
-  "name": "@xevent/core",
+  "name": "@xevent/event-chain",
   "version": "0.0.0",
   "files": [
-    "dist/src",
-    "package.json"
+    "src"
   ],
   "type": "module",
   "main": "./src/index.ts",
@@ -16,11 +15,8 @@
       }
     }
   },
-  "scripts": {
-    "build": "tsc",
-    "publish": "npm publish --access=public"
-  },
   "dependencies": {
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "@xevent/core": "workspace:^"
   }
 }
