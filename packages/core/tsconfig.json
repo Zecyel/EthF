@@ -3,12 +3,13 @@
         "target": "ESNext",
         "module": "ESNext",
         "moduleResolution": "Bundler",
-        "strict": false
+        "strict": false,
+        "outDir": "dist"
     },
     "exclude": [
         "node_modules"
     ],
     "include": [
         "src/**/*.ts"
-    ]
+    ],
 }

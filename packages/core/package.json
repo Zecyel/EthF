@@ -15,6 +15,10 @@
       }
     }
   },
+  "scripts": {
+    "build": "tsc",
+    "publish": "npm publish --access=public"
+  },
   "dependencies": {
     "typescript": "^5.2.2"
   }
