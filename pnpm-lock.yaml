@@ -28,6 +28,9 @@ importers:
       '@ethf/core':
         specifier: workspace:^
         version: link:../core
+      '@ethf/event-chain':
+        specifier: workspace:^
+        version: link:../event-chain
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
