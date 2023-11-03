@@ -32,10 +32,10 @@ declare module '@ethf/core' {
     }
 }
 
-let app = createApp([
-    plugin1,
-    plugin2
-])
+let app1 = createApp([ plugin1 ])
 
-app.debugC()
-app.debugD()
+let app2 = createApp([ plugin2 ])
+
+app1.debugC()
+app2.debugD()
+app2.debugC() // oh bro that's weird
