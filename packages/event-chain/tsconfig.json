@@ -3,7 +3,9 @@
         "target": "ESNext",
         "module": "ESNext",
         "moduleResolution": "Bundler",
-        "strict": false
+        "strict": false,
+        "outDir": "dist",
+        "declaration": true
     },
     "exclude": [
         "node_modules"
