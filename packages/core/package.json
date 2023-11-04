@@ -6,13 +6,13 @@
     "package.json"
   ],
   "type": "module",
-  "main": "./dist/src/index.ts",
-  "types": "./dist/src/index.ts",
+  "main": "./dist/index.ts",
+  "types": "./dist/index.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/src/index.ts",
-        "default": "./dist/src/index.ts"
+        "types": "./dist/index.ts",
+        "default": "./dist/index.ts"
       }
     }
   },
@@ -20,6 +20,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@ethf/core": "link:",
     "typescript": "^5.2.2"
   }
 }
