@@ -1,4 +1,4 @@
-import { App, createApp, createAppPlugin } from "@ethf/core";
+import { createApp, createAppPlugin } from "@ethf/core";
 
 const plugin1 = createAppPlugin(
     base => class extends base {
@@ -19,3 +19,5 @@ const plugin2 = createAppPlugin(
 )
 
 const app = createApp([ plugin1, plugin2 ])
+
+app
