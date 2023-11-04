@@ -1,25 +1,20 @@
+export type UnionToIntersection<T> =
+    (T extends any ? (arg: T) => any : never) extends
+    (arg: infer R) => any ? R : never
+
 type Ctor<T> = new () => T
 
-export class XCore<T> {
-    constructor (public base: Ctor<T>) {}
+export type XPlugin<Base, T> = (base: Ctor<Base>) => Ctor<T>
 
-    apply(plugin: XPlugin<T>) {
-        this.base = plugin.plugin(this.base)
+export function createInstance<Base, T>(
+    base: Ctor<Base>,
+    plugins: XPlugin<Base, T>[]
+): UnionToIntersection<T> {
+    let ret = base
+    for (let i of plugins) {
+        // @ts-ignore
+        ret = i(ret)
     }
-
-    get(): Ctor<T> {
-        return this.base
-    }
-}
-
-export class XPlugin<T> {
-    constructor (public plugin: (base: Ctor<T>) => Ctor<T>) {}
-}
-
-export function createInstance<T>(base: Ctor<T>, plugins: XPlugin<T>[]): T {
-    let inst = new XCore<T>(base)
-    for (let plg of plugins) {
-        inst.apply(plg)
-    }
-    return new (inst.get())
+    // @ts-ignore
+    return new ret()
 }

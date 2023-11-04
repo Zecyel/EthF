@@ -1,27 +1,14 @@
-import { createApp } from "@ethf/core";
-import { EnvironmentBase, EnvironmentPlugin, createEnvironment, useEnvironment } from "@ethf/event-chain";
+import { App, createApp } from "@ethf/core";
 
-let app = createApp([ useEnvironment ])
-
-let env_plg = new EnvironmentPlugin(
+const plugin1 =
     base => class extends base {
-        count: number = 0
-        foo(): EnvironmentBase {
-            this.count ++
-            console.log(`Count: ${this.count}`)
-            return this
+        a: number = 1
+        logA() {
+            console.log(`Value a is ${this.a}`)
         }
     }
-)
 
-declare module '@ethf/event-chain' {
-    interface EnvironmentBase {
-        count: number
-        foo(): EnvironmentBase
-    }
-}
+const app = createApp([ plugin1 ])
 
-let env = createEnvironment([ env_plg ])
-app.addEnv('counter', env)
-
-app.getEnv('counter').foo().foo().foo()
+app.a = 10
+app.logA()

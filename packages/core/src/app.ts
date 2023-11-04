@@ -1,13 +1,9 @@
-import { XCore, XPlugin, createInstance } from "./plugin"
+import { UnionToIntersection, XPlugin, createInstance } from "./plugin"
 
-export class AppBase {}
+export class App {}
 
-export const App = XCore<AppBase>
-export type App = XCore<AppBase>
+export type AppPlugin<T> = XPlugin<App, T>
 
-export const AppPlugin = XPlugin<AppBase>
-export type AppPlugin = XPlugin<AppBase>
-
-export function createApp(plugins: AppPlugin[]): AppBase {
-    return createInstance(AppBase, plugins)
+export function createApp<T>(plugins: AppPlugin<T>[]): UnionToIntersection<T> {
+    return createInstance<App, T>(App, plugins)
 }
