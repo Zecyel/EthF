@@ -1,9 +1,9 @@
-import { UnionToIntersection, XPlugin, createInstance } from "./plugin"
+import { XPlugin, MergePlugins, createInstance } from "./plugin"
 
-export class App {}
+export class App { }
 
 export type AppPlugin<T> = XPlugin<App, T>
 
-export function createApp<T>(plugins: AppPlugin<T>[]): UnionToIntersection<T> {
-    return createInstance<App, T>(App, plugins)
+export function createApp<const Plugins extends readonly AppPlugin<any>[]>(plugins: Plugins): MergePlugins<App, Plugins> {
+    return createInstance<App, Plugins>(App, plugins)
 }

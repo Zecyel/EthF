@@ -1,20 +1,29 @@
-export type UnionToIntersection<T> =
-    (T extends any ? (arg: T) => any : never) extends
-    (arg: infer R) => any ? R : never
-
 type Ctor<T> = new () => T
 
 export type XPlugin<Base, T> = (base: Ctor<Base>) => Ctor<T>
 
-export function createInstance<Base, T>(
+export function createPlugin<Base, T>(
+    plugin: (base: Ctor<Base>) => Ctor<T>
+): XPlugin<Base, T> {
+    return plugin
+}
+
+export type MergePlugins<Base, Plugins extends readonly XPlugin<Base, any>[]> =
+    Plugins extends readonly [infer P1, ...infer Rest] ?
+    P1 extends XPlugin<any, infer R1> ?
+    Rest extends XPlugin<any, any>[] ?
+    R1 & MergePlugins<Base, Rest> :
+    never :
+    never :
+    Base
+
+export function createInstance<Base, const Plugins extends readonly XPlugin<Base, any>[]>(
     base: Ctor<Base>,
-    plugins: XPlugin<Base, T>[]
-): UnionToIntersection<T> {
-    let ret = base
+    plugins: Plugins
+): MergePlugins<Base, Plugins> {
+    let ret = base as Ctor<MergePlugins<Base, Plugins>>;
     for (let i of plugins) {
-        // @ts-ignore
         ret = i(ret)
     }
-    // @ts-ignore
     return new ret()
 }
