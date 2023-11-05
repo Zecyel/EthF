@@ -21,7 +21,7 @@ export function createInstance<Base, const Plugins extends readonly XPlugin<Base
     base: Ctor<Base>,
     plugins: Plugins
 ): MergePlugins<Base, Plugins> {
-    let ret = base as Ctor<MergePlugins<Base, Plugins>>;
+    let ret = base as Ctor<MergePlugins<Base, Plugins>>
     for (let i of plugins) {
         ret = i(ret)
     }
