@@ -1,6 +1,6 @@
 {
-  "name": "@ethf/event-chain",
-  "version": "0.0.1",
+  "name": "@ethf/env",
+  "version": "0.0.0",
   "files": [
     "dist/",
     "package.json"

@@ -1,5 +1,5 @@
 import { createApp, createAppPlugin } from "@ethf/core";
-import { EnvironmentPlugin, createEnvironment, createEnvironmentPlugin } from "@ethf/event-chain";
+import { createEnvironment, createEnvironmentPlugin } from "@ethf/env";
 
 const app_plugin1 = createAppPlugin(
     base => class extends base {
