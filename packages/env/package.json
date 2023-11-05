@@ -1,18 +1,18 @@
 {
   "name": "@ethf/env",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "files": [
-    "dist/",
+    "src/",
     "package.json"
   ],
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
       "import": {
-        "default": "./dist/index.js",
-        "types": "./dist/index.d.ts"
+        "default": "./src/index.ts",
+        "types": "./src/index.ts"
       }
     }
   },
