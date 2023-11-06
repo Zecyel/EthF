@@ -1,13 +1,13 @@
 type Ctor<T> = new () => T
 
 export class XCore {
-    __EthF_Core_XCore_Signature = '5797E17845D6708B652019649E675D5B'
+    private __EthF_Core_XCore_Signature = '5797E17845D6708B652019649E675D5B'
 }
 
 export type XPlugin<Base, T> = (base: Ctor<Base>) => Ctor<T>
 
-export function createPlugin<Base, T>(
-    plugin: (base: Ctor<Base>) => Ctor<T>
+export function createPlugin<Base extends XCore, T extends XCore>(
+    plugin: XPlugin<Base, T>
 ): XPlugin<Base, T> {
     return plugin
 }
