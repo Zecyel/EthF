@@ -1,6 +1,6 @@
 {
   "name": "@ethf/core",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "files": [
     "src/",
     "README.md",
@@ -19,5 +19,6 @@
   },
   "dependencies": {
     "typescript": "^5.2.2"
-  }
+  },
+  "license": "MIT"
 }
