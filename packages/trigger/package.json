@@ -1,6 +1,6 @@
 {
   "name": "@ethf/trigger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "src/",
     "package.json"
@@ -18,5 +18,6 @@
   },
   "dependencies": {
     "typescript": "^5.2.2"
-  }
+  },
+  "license": "MIT"
 }
