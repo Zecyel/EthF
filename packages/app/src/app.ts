@@ -1,6 +1,6 @@
-import { XPlugin, MergePlugins, createInstance } from "../../core/src/plugin"
+import { MergePlugins, XPlugin, createInstance } from "@ethf/core"
 
-export class App { }
+export class App {}
 
 export type AppPlugin<T> = XPlugin<App, T>
 
