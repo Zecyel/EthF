@@ -8,11 +8,17 @@ importers:
 
   .: {}
 
-  packages/core:
+  packages/app:
     dependencies:
       '@ethf/core':
-        specifier: 'link:'
-        version: 'link:'
+        specifier: workspace:^
+        version: link:../core
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
+  packages/core:
+    dependencies:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
