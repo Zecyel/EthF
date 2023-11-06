@@ -1,4 +1,4 @@
-import { XPlugin, MergePlugins, createInstance } from "./plugin"
+import { XPlugin, MergePlugins, createInstance } from "../../core/src/plugin"
 
 export class App { }
 

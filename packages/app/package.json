@@ -1,6 +1,6 @@
 {
-  "name": "@ethf/core",
-  "version": "0.3.0",
+  "name": "@ethf/app",
+  "version": "0.0.1",
   "files": [
     "src/",
     "package.json"
@@ -20,6 +20,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "@ethf/core": "workspace:^"
   }
 }
