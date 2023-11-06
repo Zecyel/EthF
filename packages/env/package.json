@@ -16,9 +16,6 @@
       }
     }
   },
-  "scripts": {
-    "build": "tsc"
-  },
   "dependencies": {
     "typescript": "^5.2.2",
     "@ethf/core": "workspace:^"

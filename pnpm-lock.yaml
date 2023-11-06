@@ -26,6 +26,15 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
+  packages/event-chain:
+    dependencies:
+      '@ethf/env':
+        specifier: workspace:^
+        version: link:../env
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
   packages/test:
     dependencies:
       '@ethf/core':
@@ -34,6 +43,12 @@ importers:
       '@ethf/env':
         specifier: workspace:^
         version: link:../env
+      '@ethf/event-chain':
+        specifier: workspace:^
+        version: link:../event-chain
+      '@ethf/trigger':
+        specifier: workspace:^
+        version: link:../trigger
       typescript:
         specifier: ^5.2.2
         version: 5.2.2

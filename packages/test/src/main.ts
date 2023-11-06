@@ -1,15 +1,29 @@
-import { createApp, createAppPlugin } from "@ethf/core";
-import { createEnvironment } from "@ethf/env";
-import { useChain } from "@ethf/event-chain";
+import { MergePlugins } from "@ethf/core"
+import { Environment, createEnvironment, createEnvironmentPlugin } from "@ethf/env"
+import { useChain } from "@ethf/event-chain"
+import { Trigger } from "@ethf/trigger"
 
-const env = createEnvironment([ useChain ])
-
-const app_plugin2 = createAppPlugin(
+const useButton = createEnvironmentPlugin(
     base => class extends base {
-        env = env
+        x: number
+        y: number
     }
 )
 
-const app = createApp([ app_plugin2 ])
+let trig = new Trigger<MergePlugins<Environment, [ typeof useChain, typeof useButton ]>>()
 
-app.env.next((_) => 5).next<number>((_, $) => console.log($))
+document
+    .getElementById('button')
+    .addEventListener(
+        'click',
+        (ev) => {
+            let env = createEnvironment([ useChain, useButton ])
+            env.x = ev.clientX
+            env.y = ev.clientY
+            trig.trigger(env)
+        }
+    )
+
+trig.bind((env) => {
+    env.next((_) => { console.log(_.x, _.y) })
+})
