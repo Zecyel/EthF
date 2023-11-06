@@ -4,5 +4,6 @@
   "type": "module",
   "scripts": {
     "test": "pnpm -r --parallel --filter \"@ethf/test...\" run dev"
-  }
+  },
+  "license": "MIT"
 }
