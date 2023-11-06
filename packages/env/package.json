@@ -1,6 +1,6 @@
 {
   "name": "@ethf/env",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "files": [
     "src/",
     "package.json"
@@ -19,5 +19,6 @@
   "dependencies": {
     "typescript": "^5.2.2",
     "@ethf/core": "workspace:^"
-  }
+  },
+  "license": "MIT"
 }
