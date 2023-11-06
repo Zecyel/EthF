@@ -12,6 +12,7 @@
     "@ethf/core": "workspace:^",
     "@ethf/env": "workspace:^",
     "@ethf/event-chain": "workspace:^",
-    "@ethf/trigger": "workspace:^"
+    "@ethf/trigger": "workspace:^",
+    "@ethf/app": "workspace:^"
   }
 }
