@@ -1,5 +1,9 @@
 type Ctor<T> = new () => T
 
+export class XCore {
+    __EthF_Core_XCore_Signature = '5797E17845D6708B652019649E675D5B'
+}
+
 export type XPlugin<Base, T> = (base: Ctor<Base>) => Ctor<T>
 
 export function createPlugin<Base, T>(
@@ -9,13 +13,15 @@ export function createPlugin<Base, T>(
 }
 
 export type MergePlugins<Base, Plugins extends readonly XPlugin<Base, any>[]> =
-    Plugins extends readonly [infer P1, ...infer Rest] ?
-    P1 extends XPlugin<any, infer R1> ?
-    Rest extends XPlugin<any, any>[] ?
-    R1 & MergePlugins<Base, Rest> :
-    never :
-    never :
-    Base
+    Plugins extends readonly [infer P1, ...infer Rest]
+    ? P1 extends XPlugin<infer R, infer R1>
+        ? R1 extends R
+            ? Rest extends XPlugin<any, any>[]
+                ? R1 & MergePlugins<Base, Rest>
+                : never
+            : never
+        : never
+    : Base
 
 export function createInstance<Base, const Plugins extends readonly XPlugin<Base, any>[]>(
     base: Ctor<Base>,
