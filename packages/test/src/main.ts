@@ -1,29 +1,27 @@
-import { MergePlugins } from "@ethf/core"
-import { Environment, createEnvironment, createEnvironmentPlugin } from "@ethf/env"
-import { useChain } from "@ethf/event-chain"
-import { Trigger } from "@ethf/trigger"
+import { createEnvironment, createEnvironmentPlugin, createMiddleWare, useChain } from "ethf"
 
-const useButton = createEnvironmentPlugin(
+const plugin1 = createEnvironmentPlugin(
     base => class extends base {
-        x: number
-        y: number
+        b: number = 20
+        printB() {
+            console.log(`b = ${this.b}`)
+            this.b = 30
+        }
     }
 )
 
-let trig = new Trigger<MergePlugins<Environment, [ typeof useChain, typeof useButton ]>>()
-
-document
-    .getElementById('button')
-    .addEventListener(
-        'click',
-        (ev) => {
-            let env = createEnvironment([ useChain, useButton ])
-            env.x = ev.clientX
-            env.y = ev.clientY
-            trig.trigger(env)
+const plugin2 = createEnvironmentPlugin(
+    base => class extends base {
+        constructor () {
+            super()
         }
-    )
+    }
+)
 
-trig.bind((env) => {
-    env.next((_) => { console.log(_.x, _.y) })
+const instance = createEnvironment([ plugin1, useChain ])
+
+let middleware = createMiddleWare<typeof instance, number>((_) => {
+    _.printB()
 })
+
+instance.once(middleware).once(middleware)

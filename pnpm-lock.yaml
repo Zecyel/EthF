@@ -23,6 +23,21 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
+  packages/dom:
+    dependencies:
+      '@ethf/env':
+        specifier: workspace:^
+        version: link:../env
+      '@ethf/event-chain':
+        specifier: workspace:^
+        version: link:../event-chain
+      '@ethf/trigger':
+        specifier: workspace:^
+        version: link:../trigger
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
   packages/env:
     dependencies:
       '@ethf/core':
@@ -32,17 +47,11 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  packages/event-chain:
+  packages/ethf:
     dependencies:
-      '@ethf/env':
+      '@ethf/app':
         specifier: workspace:^
-        version: link:../env
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
-  packages/test:
-    dependencies:
+        version: link:../app
       '@ethf/core':
         specifier: workspace:^
         version: link:../core
@@ -58,15 +67,39 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
+
+  packages/event-chain:
+    dependencies:
+      '@ethf/env':
+        specifier: workspace:^
+        version: link:../env
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
+  packages/once:
+    dependencies:
+      '@ethf/env':
+        specifier: workspace:^
+        version: link:../env
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
+  packages/test:
+    dependencies:
+      ethf:
+        specifier: workspace:^
+        version: link:../ethf
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
       vite:
         specifier: ^4.5.0
         version: 4.5.0
 
   packages/trigger:
     dependencies:
-      '@ethf/core':
-        specifier: workspace:^
-        version: link:../core
       typescript:
         specifier: ^5.2.2
         version: 5.2.2

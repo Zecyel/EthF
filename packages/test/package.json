@@ -9,10 +9,6 @@
   "dependencies": {
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
-    "@ethf/core": "workspace:^",
-    "@ethf/env": "workspace:^",
-    "@ethf/event-chain": "workspace:^",
-    "@ethf/trigger": "workspace:^",
-    "@ethf/app": "workspace:^"
+    "ethf": "workspace:^"
   }
 }
