@@ -24,4 +24,9 @@ let middleware = createMiddleWare<typeof instance, number>((_) => {
     _.printB()
 })
 
-instance.once(middleware).once(middleware)
+instance.once(middleware).once(middleware).for([1, 2, 3], (_, val) => {
+    console.log(val + _.$ as number)
+    return val
+// }).loop((_) => {
+    // console.log("123")
+})
