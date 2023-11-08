@@ -8,6 +8,8 @@ export function createEnvironmentPlugin<T>(plugin: EnvironmentPlugin<T>): Enviro
     return plugin
 }
 
-export function createEnvironment<const Plugins extends readonly EnvironmentPlugin<any>[]>(plugins: Plugins): MergePlugins<Environment, Plugins> {
+export type EnvironmentType<Plugins extends readonly EnvironmentPlugin<any>[]> = MergePlugins<Environment, Plugins>
+
+export function createEnvironment<const Plugins extends readonly EnvironmentPlugin<any>[]>(plugins: Plugins): EnvironmentType<Plugins> {
     return createInstance<Environment, Plugins>(Environment, plugins)
 }
