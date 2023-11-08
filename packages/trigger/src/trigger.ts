@@ -1,5 +1,5 @@
 export class Trigger<T> {
-    callback: ((data: T) => void)[] = []
+    private callback: ((data: T) => void)[] = []
 
     bind(callback: (data: T) => void): void {
         this.callback.push(callback)
