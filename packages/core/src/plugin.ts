@@ -23,7 +23,7 @@ export type MergePlugins<Base, Plugins extends readonly XPlugin<Base, any>[]> =
         : never
     : Base
 
-export function createInstance<Base, const Plugins extends readonly XPlugin<Base, any>[]>(
+export function createInstance<Base extends XCore, const Plugins extends readonly XPlugin<Base, any>[]>(
     base: Ctor<Base>,
     plugins: Plugins
 ): MergePlugins<Base, Plugins> {
