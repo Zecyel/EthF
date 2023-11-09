@@ -1,0 +1,25 @@
+{
+  "name": "@ethf/data",
+  "version": "0.0.1",
+  "files": [
+    "src/",
+    "package.json"
+  ],
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./src/index.ts",
+        "types": "./src/index.ts"
+      }
+    }
+  },
+  "dependencies": {
+    "typescript": "^5.2.2",
+    "@ethf/env": "workspace:^",
+    "@ethf/trigger": "workspace:^"
+  },
+  "license": "MIT"
+}

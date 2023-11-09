@@ -1,32 +1,19 @@
-import { createEnvironment, createEnvironmentPlugin, createMiddleWare, useChain } from "ethf"
+import * as data from "@ethf/data"
 
-const plugin1 = createEnvironmentPlugin(
-    base => class extends base {
-        b: number = 20
-        printB() {
-            console.log(`b = ${this.b}`)
-            this.b = 30
-        }
-    }
-)
+let a = new data.Number(2)
+let b = new data.Number(3)
 
-const plugin2 = createEnvironmentPlugin(
-    base => class extends base {
-        constructor () {
-            super()
-        }
-    }
-)
-
-const instance = createEnvironment([ plugin1, useChain ])
-
-let middleware = createMiddleWare<typeof instance, number>((_) => {
-    _.printB()
+a.onchange.bind((_) => {
+    b.value = _.newValue
 })
 
-instance.once(middleware).once(middleware).for([1, 2, 3], (_, val) => {
-    console.log(val + _.$ as number)
-    return val
-// }).loop((_) => {
-    // console.log("123")
+b.onchange.bind((_) => {
+    a.value = _.newValue
+})
+
+a.value = 1
+
+document.getElementById('button').addEventListener('click', () => {
+    console.log(`a is ${a.value}`)
+    console.log(`b is ${b.value}`)
 })
