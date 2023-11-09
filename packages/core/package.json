@@ -1,8 +1,13 @@
 {
   "name": "@ethf/core",
   "version": "0.4.5",
+  "scripts": {
+    "test": "jest"
+  },
   "files": [
     "src/",
+    "doc/",
+    "test/",
     "README.md",
     "package.json"
   ],
@@ -20,5 +25,9 @@
   "dependencies": {
     "typescript": "^5.2.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "ts-jest": "^29.1.1"
+  }
 }
