@@ -1,3 +1,4 @@
+import { XBoolean } from "../type/boolean"
 import { XNumber } from "../type/number"
 import { PODBinaryOperation, PODUnaryOperation } from "./operation"
 
@@ -16,3 +17,15 @@ const unaryOperationGenerator =
     PODUnaryOperation<number, number>(0, XNumber, op, arg)
 
 export const Neg = unaryOperationGenerator((arg) => -arg)
+
+const toBoolBinaryOperationGenerator = 
+    (op: (lhs: number, rhs: number) => boolean) =>
+    (lhs: XNumber, rhs: XNumber) =>
+    PODBinaryOperation<number, number, boolean>(false, XBoolean, op, lhs, rhs)
+
+export const Equal = toBoolBinaryOperationGenerator((lhs, rhs) => lhs === rhs)
+export const NotEqual = toBoolBinaryOperationGenerator((lhs, rhs) => lhs !== rhs)
+export const Greater = toBoolBinaryOperationGenerator((lhs, rhs) => lhs > rhs)
+export const GreaterEqual = toBoolBinaryOperationGenerator((lhs, rhs) => lhs >= rhs)
+export const Less = toBoolBinaryOperationGenerator((lhs, rhs) => lhs < rhs)
+export const LessEqual = toBoolBinaryOperationGenerator((lhs, rhs) => lhs <= rhs)
