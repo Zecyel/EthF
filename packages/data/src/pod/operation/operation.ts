@@ -17,10 +17,10 @@ export function PODBinaryOperation<PlainType, WrappedType extends PODWrappedType
     rhs: WrappedType
 ): WrappedType {
     let ret = new ctor(initialValue)
-    lhs.onchange.bind((_) => {
+    lhs.onChange.bind((_) => {
         ret.value = op(_.newValue, rhs.value)
     })
-    rhs.onchange.bind((_) => {
+    rhs.onChange.bind((_) => {
         ret.value = op(lhs.value, _.newValue)
     })
     return ret
@@ -35,7 +35,7 @@ export function PODUnaryOperation<PlainType, WrappedType extends PODWrappedType<
     arg: WrappedType
 ): WrappedType {
     let ret = new ctor(initialValue)
-    arg.onchange.bind((_) => {
+    arg.onChange.bind((_) => {
         ret.value = op(_.newValue)
     })
     return ret

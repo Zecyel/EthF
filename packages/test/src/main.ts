@@ -6,7 +6,7 @@ let b = new data.XNumber(3)
 let sum = data.Add(a, b)
 let neg = data.Neg(sum)
 
-neg.onchange.bind((_) => {
+neg.onChange.bind((_) => {
     console.log(`neg is ${_.newValue}`)
 })
 

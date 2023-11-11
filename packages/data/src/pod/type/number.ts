@@ -15,7 +15,7 @@ export type XNumberOnChangeTrigger = Trigger<XNumberEnvironment>
 
 export class XNumber implements Variant<number, XNumberEnvironment> {
 
-    private onChangeTrigger: XNumberOnChangeTrigger | undefined = undefined
+    private onChangeTrigger: XNumberOnChangeTrigger = new Trigger<XNumberEnvironment>()
     
     constructor (private _value: number) {}
     
@@ -27,11 +27,6 @@ export class XNumber implements Variant<number, XNumberEnvironment> {
         if (this._value === newValue)
             return
 
-        if (this.onChangeTrigger === undefined) {
-            this._value = newValue
-            return
-        }
-
         let env = createEnvironment([ useXNumberEnvironmentPlugin ])
         env.oldValue = this._value
         env.newValue = newValue
@@ -41,10 +36,7 @@ export class XNumber implements Variant<number, XNumberEnvironment> {
         this.onChangeTrigger.trigger(env)
     }
 
-    get onchange(): XNumberOnChangeTrigger {
-        if (this.onChangeTrigger === undefined) {
-            return this.onChangeTrigger = new Trigger<XNumberEnvironment>()
-        }
+    get onChange(): XNumberOnChangeTrigger {
         return this.onChangeTrigger
     }
 }
