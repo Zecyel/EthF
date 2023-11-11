@@ -1,6 +1,6 @@
-import { Trigger } from "@ethf/trigger"
 import { EnvironmentType, createEnvironment, createEnvironmentPlugin } from "@ethf/env"
-import { MaybeVariant, Variant } from "../../variant"
+import { Trigger } from "@ethf/trigger"
+import { Variant } from "../../variant"
 
 const useXNumberPlugin = createEnvironmentPlugin(
     base => class extends base {
@@ -44,15 +44,5 @@ export class XNumber implements Variant<number, XNumberEnvironment> {
             return this.onChangeTrigger = new Trigger<XNumberEnvironment>()
         }
         return this.onChangeTrigger
-    }
-}
-
-export type MaybeXNumber = MaybeVariant<number, XNumberEnvironment>
-
-export function getValue(num: MaybeXNumber): number {
-    if (typeof num === 'number') {
-        return num
-    } else {
-        return num.value
     }
 }

@@ -1,19 +1,22 @@
-import { MaybeXNumber, XNumber, getValue } from "../type/number"
+import { XNumber } from "../type/number"
 
-export function Add(lhs: MaybeXNumber, rhs: MaybeXNumber): MaybeXNumber {
-    if (typeof lhs === 'number' && typeof rhs === 'number') {
-        return lhs + rhs
-    }
+export function BinaryOperation(
+    op: (a: number, b: number) => number,
+    lhs: XNumber,
+    rhs: XNumber
+): XNumber {
     let ret = new XNumber(0)
-    if (typeof lhs === 'object') {
-        (lhs as XNumber).onchange.bind((_) => {
-            ret.value = _.newValue + getValue(rhs)
-        })
-    }
-    if (typeof rhs === 'object') {
-        (rhs as XNumber).onchange.bind((_) => {
-            ret.value = getValue(lhs) + _.newValue
-        })
-    }
+    lhs.onchange.bind((_) => {
+        ret.value = op(_.newValue, rhs.value)
+    })
+    rhs.onchange.bind((_) => {
+        ret.value = op(lhs.value, _.newValue)
+    })
     return ret
 }
+
+export type BinaryOperationType = (lhs: XNumber, rhs: XNumber) => XNumber
+
+export const Add: BinaryOperationType = (lhs, rhs) => BinaryOperation((a, b) => a + b, lhs, rhs)
+export const Sub: BinaryOperationType = (lhs, rhs) => BinaryOperation((a, b) => a - b, lhs, rhs)
+export const Mul: BinaryOperationType = (lhs, rhs) => BinaryOperation((a, b) => a * b, lhs, rhs)
