@@ -1,39 +1,46 @@
-import { Variant } from "../../variant"
+import { PODMap, PODType } from "../types"
 
-type PODEnvironment<T> = {
-    oldValue: T,
-    newValue: T
-}
+export type BinaryOperation<
+    LhsType extends PODType,
+    RhsType extends PODType,
+    RetType extends PODType
+> = (lhs: LhsType, rhs: RhsType) => RetType
 
-type PODWrappedType<PlainType> = Variant<PlainType, PODEnvironment<PlainType>>
-
-export type BinaryFunctionType<T> = (lhs: T, rhs: T) => T
-
-export function PODBinaryOperation<PlainType, WrappedType extends PODWrappedType<PlainType>>(
-    initialValue: PlainType,
-    ctor: new (val: PlainType) => WrappedType,
-    op: BinaryFunctionType<PlainType>,
-    lhs: WrappedType,
-    rhs: WrappedType
-): WrappedType {
+export function PODBinaryOperation<
+    LhsType extends PODType,
+    RhsType extends PODType,
+    RetType extends PODType
+>(
+    initialValue: RetType,
+    ctor: new (val: RetType) => PODMap<RetType>,
+    op: BinaryOperation<LhsType, RhsType, RetType>,
+    lhs: PODMap<LhsType>,
+    rhs: PODMap<RhsType>
+): PODMap<RetType> {
     let ret = new ctor(initialValue)
     lhs.onChange.bind((_) => {
-        ret.value = op(_.newValue, rhs.value)
+        ret.value = op(_.newValue, rhs.value as RhsType)
     })
     rhs.onChange.bind((_) => {
-        ret.value = op(lhs.value, _.newValue)
+        ret.value = op(lhs.value as LhsType, _.newValue)
     })
     return ret
 }
 
-export type UnaryFunctionType<T> = (arg: T) => T
+export type UnaryOperation<
+    ArgType extends PODType,
+    RetType extends PODType
+> = (lhs: ArgType) => RetType
 
-export function PODUnaryOperation<PlainType, WrappedType extends PODWrappedType<PlainType>>(
-    initialValue: PlainType,
-    ctor: new (val: PlainType) => WrappedType,
-    op: UnaryFunctionType<PlainType>,
-    arg: WrappedType
-): WrappedType {
+export function PODUnaryOperation<
+    ArgType extends PODType,
+    RetType extends PODType
+>(
+    initialValue: RetType,
+    ctor: new (val: RetType) => PODMap<RetType>,
+    op: UnaryOperation<ArgType, RetType>,
+    arg: PODMap<ArgType>,
+): PODMap<RetType> {
     let ret = new ctor(initialValue)
     arg.onChange.bind((_) => {
         ret.value = op(_.newValue)
