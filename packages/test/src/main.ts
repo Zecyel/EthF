@@ -1,19 +1,14 @@
 import * as data from "@ethf/data"
 
-let a = new data.Number(2)
-let b = new data.Number(3)
+let a = new data.XNumber(2)
+let b = new data.XNumber(3)
 
-a.onchange.bind((_) => {
-    b.value = _.newValue
+let sum = data.Add(a, b);
+
+(sum as data.XNumber).onchange.bind((_) => {
+    console.log(`sum is ${_.newValue}`)
 })
-
-b.onchange.bind((_) => {
-    a.value = _.newValue
-})
-
-a.value = 1
 
 document.getElementById('button').addEventListener('click', () => {
-    console.log(`a is ${a.value}`)
-    console.log(`b is ${b.value}`)
+    a.value += 10;
 })
