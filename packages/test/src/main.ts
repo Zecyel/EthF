@@ -4,9 +4,10 @@ let a = new data.XNumber(2)
 let b = new data.XNumber(3)
 
 let sum = data.Add(a, b)
+let neg = data.Neg(sum)
 
-sum.onchange.bind((_) => {
-    console.log(`sum is ${_.newValue}`)
+neg.onchange.bind((_) => {
+    console.log(`neg is ${_.newValue}`)
 })
 
 document.getElementById('button').addEventListener('click', () => {

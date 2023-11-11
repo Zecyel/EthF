@@ -1,22 +1,22 @@
 import { XNumber } from "../type/number"
+import { BinaryFunctionType, PODBinaryOperation, PODUnaryOperation, UnaryFunctionType } from "./operation"
 
-export function BinaryOperation(
-    op: (a: number, b: number) => number,
-    lhs: XNumber,
-    rhs: XNumber
-): XNumber {
-    let ret = new XNumber(0)
-    lhs.onchange.bind((_) => {
-        ret.value = op(_.newValue, rhs.value)
-    })
-    rhs.onchange.bind((_) => {
-        ret.value = op(lhs.value, _.newValue)
-    })
-    return ret
-}
+const NumberBinaryOperation = (op: BinaryFunctionType<number>, lhs: XNumber, rhs: XNumber) =>
+    PODBinaryOperation<number, XNumber>(
+        0,
+        XNumber,
+        op, lhs, rhs
+    )
 
-export type BinaryOperationType = (lhs: XNumber, rhs: XNumber) => XNumber
+const NumberUnaryOperation = (op: UnaryFunctionType<number>, arg: XNumber) =>
+    PODUnaryOperation<number, XNumber>(
+        0,
+        XNumber,
+        op, arg
+    )
 
-export const Add: BinaryOperationType = (lhs, rhs) => BinaryOperation((a, b) => a + b, lhs, rhs)
-export const Sub: BinaryOperationType = (lhs, rhs) => BinaryOperation((a, b) => a - b, lhs, rhs)
-export const Mul: BinaryOperationType = (lhs, rhs) => BinaryOperation((a, b) => a * b, lhs, rhs)
+export const Add: BinaryFunctionType<XNumber> = (lhs, rhs) => NumberBinaryOperation((lhs, rhs) => lhs + rhs, lhs, rhs)
+export const Sub: BinaryFunctionType<XNumber> = (lhs, rhs) => NumberBinaryOperation((lhs, rhs) => lhs - rhs, lhs, rhs)
+export const Mul: BinaryFunctionType<XNumber> = (lhs, rhs) => NumberBinaryOperation((lhs, rhs) => lhs * rhs, lhs, rhs)
+
+export const Neg: UnaryFunctionType<XNumber> = (arg) => NumberUnaryOperation((arg) => -arg, arg)
