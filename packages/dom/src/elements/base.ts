@@ -15,6 +15,6 @@ export class Base {
     }
 }
 
-export class appendChild(par: Base, son: Base) {
+export function appendChild(par: Base, son: Base) {
     par.el.appendChild(son.el)
 }

@@ -44,6 +44,9 @@ importers:
 
   packages/dom:
     dependencies:
+      '@ethf/data':
+        specifier: workspace:^
+        version: link:../data
       '@ethf/env':
         specifier: workspace:^
         version: link:../env
@@ -101,6 +104,9 @@ importers:
       '@ethf/data':
         specifier: workspace:^
         version: link:../data
+      '@ethf/dom':
+        specifier: workspace:^
+        version: link:../dom
       ethf:
         specifier: workspace:^
         version: link:../ethf
