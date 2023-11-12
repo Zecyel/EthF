@@ -20,7 +20,8 @@
       "typescript": "^5.2.2",
       "@ethf/env": "workspace:^",
       "@ethf/event-chain": "workspace:^",
-      "@ethf/trigger": "workspace:^"
+      "@ethf/trigger": "workspace:^",
+      "@ethf/data": "workspace:^"
   },
   "license": "MIT"
 }
