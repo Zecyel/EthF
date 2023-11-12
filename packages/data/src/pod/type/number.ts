@@ -2,14 +2,14 @@ import { EnvironmentType, createEnvironment, createEnvironmentPlugin } from "@et
 import { Trigger } from "@ethf/trigger"
 import { Variant } from "../../variant"
 
-const useXNumberEnvironmentPlugin = createEnvironmentPlugin(
+const useXNumberEnvironment = createEnvironmentPlugin(
     base => class extends base {
         oldValue: number
         newValue: number
     }
 )
 
-export type XNumberEnvironment = EnvironmentType<[ typeof useXNumberEnvironmentPlugin ]>
+export type XNumberEnvironment = EnvironmentType<[ typeof useXNumberEnvironment ]>
 
 export type XNumberOnChangeTrigger = Trigger<XNumberEnvironment>
 
@@ -27,7 +27,7 @@ export class XNumber implements Variant<number, XNumberEnvironment> {
         if (this._value === newValue)
             return
 
-        let env = createEnvironment([ useXNumberEnvironmentPlugin ])
+        let env = createEnvironment([ useXNumberEnvironment ])
         env.oldValue = this._value
         env.newValue = newValue
 

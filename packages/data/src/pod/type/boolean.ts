@@ -2,14 +2,14 @@ import { EnvironmentType, createEnvironment, createEnvironmentPlugin } from "@et
 import { Trigger } from "@ethf/trigger"
 import { Variant } from "../../variant"
 
-const useXBooleanEnvironmentPlugin = createEnvironmentPlugin(
+const useXBooleanEnvironment = createEnvironmentPlugin(
     base => class extends base {
         oldValue: boolean
         newValue: boolean
     }
 )
 
-export type XBooleanEnvironment = EnvironmentType<[ typeof useXBooleanEnvironmentPlugin ]>
+export type XBooleanEnvironment = EnvironmentType<[ typeof useXBooleanEnvironment ]>
 
 export type XBooleanOnChangeTrigger = Trigger<XBooleanEnvironment>
 
@@ -27,7 +27,7 @@ export class XBoolean implements Variant<boolean, XBooleanEnvironment> {
         if (this._value === newValue)
             return
 
-        let env = createEnvironment([ useXBooleanEnvironmentPlugin ])
+        let env = createEnvironment([ useXBooleanEnvironment ])
         env.oldValue = this._value
         env.newValue = newValue
 
