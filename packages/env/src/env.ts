@@ -1,6 +1,6 @@
-import { XPlugin, MergePlugins, createInstance } from "@ethf/core"
+import { XPlugin, MergePlugins, createInstance, XCore } from "@ethf/core"
 
-export class Environment {}
+export class Environment extends XCore {}
 
 export type EnvironmentPlugin<T> = XPlugin<Environment, T>
 
