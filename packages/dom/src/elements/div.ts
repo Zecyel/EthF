@@ -3,6 +3,7 @@ import { XBoolean } from "@ethf/data"
 
 export class Div extends Base {
 
+    //@ts-expect-error
     el: HTMLDivElement
     visible: XBoolean = new XBoolean(true)
 

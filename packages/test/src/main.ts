@@ -5,6 +5,9 @@ let a = new data.XNumber(0)
 let b = new data.XNumber(30)
 
 let equ = data.NotEqual(a, b)
+equ.onChange.bind((_) => {
+    console.log(`changed to ${_.newValue}`)
+})
 
 let div = new Div()
 
@@ -17,3 +20,6 @@ div.mount()
 data.Link(div.visible, equ)
 
 document.getElementById('root').appendChild(div.el)
+document.getElementById('button').addEventListener('click', () => {
+    a.value += 10
+})
