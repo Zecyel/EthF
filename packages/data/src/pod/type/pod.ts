@@ -3,7 +3,6 @@ import { Trigger } from '@ethf/trigger'
 import { Variant } from './../../variant'
 import { PODType } from './../types'
 
-
 function useXPODEnvironment<Type extends PODType>() {
     return createEnvironmentPlugin(
         base => class extends base {
