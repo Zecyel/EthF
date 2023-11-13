@@ -5,7 +5,8 @@ export class Base {
     el: Node
     protected onMountTrigger = new OnMountTrigger()
 
-    mount() {
+    mount(par: Base) {
+        par.el.appendChild(this.el)
         let env = createOnMountTrigger()
         this.onMountTrigger.trigger(env)
     }
@@ -13,8 +14,4 @@ export class Base {
     get onMount(): OnMountTrigger {
         return this.onMountTrigger
     }
-}
-
-export function appendChild(par: Base, son: Base) {
-    par.el.appendChild(son.el)
 }

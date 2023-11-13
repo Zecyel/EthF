@@ -1,20 +1,24 @@
+import { XBoolean, XString } from '@ethf/data'
 import { Base } from "./base"
-import { XBoolean } from "@ethf/data"
 
-export class Div extends Base {
+export class P extends Base {
 
-    el: HTMLDivElement
+    el: HTMLParagraphElement
     visible: XBoolean = new XBoolean(true)
+    textContent: XString = new XString("")
 
     constructor () {
         super()
-        this.el = document.createElement('div')
+        this.el = document.createElement('p')
         this.visible.onChange.bind((_) => {
             if (_.newValue) {
                 this.el.style.visibility = 'visible'
             } else {
                 this.el.style.visibility = 'hidden'
             }
+        })
+        this.textContent.onChange.bind((_) => {
+            this.el.textContent = _.newValue
         })
     }
 }
