@@ -1,4 +1,4 @@
-import { createEnvironmentPlugin } from "@ethf/env";
+import { createEnvPlugin } from "@ethf/env";
 
 export type MiddleWare<T, U> = (_: T, $: U) => any
 
@@ -6,7 +6,7 @@ export function createMiddleWare<T, U>(middleware: MiddleWare<T, U>) {
     return middleware
 }
 
-export const useChain = createEnvironmentPlugin(
+export const useChain = createEnvPlugin(
     base => class extends base {
 
         private currentValue: any = undefined

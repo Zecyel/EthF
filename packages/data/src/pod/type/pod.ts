@@ -1,10 +1,10 @@
-import { EnvironmentType, createEnvironment, createEnvironmentPlugin } from '@ethf/env'
+import { EnvType, createEnv, createEnvPlugin } from '@ethf/env'
 import { Trigger } from '@ethf/trigger'
 import { Variant } from './../../variant'
 import { PODType } from './../types'
 
 function useXPODEnvironment<Type extends PODType>() {
-    return createEnvironmentPlugin(
+    return createEnvPlugin(
         base => class extends base {
             oldValue: Type
             newValue: Type
@@ -14,7 +14,7 @@ function useXPODEnvironment<Type extends PODType>() {
 
 type Env<T extends PODType> = typeof useXPODEnvironment<T>
 
-type XPODEnvironment<T extends PODType> = EnvironmentType<[ ReturnType<Env<T>> ]>
+type XPODEnvironment<T extends PODType> = EnvType<[ ReturnType<Env<T>> ]>
 
 type XPODOnChangeTrigger<T extends PODType> = Trigger<XPODEnvironment<T>>
 
@@ -32,7 +32,7 @@ export class XPOD<Type extends PODType> implements Variant<Type, XPODEnvironment
         if (this._value === newValue)
             return
 
-        let env = createEnvironment([ useXPODEnvironment<Type>() ])
+        let env = createEnv([ useXPODEnvironment<Type>() ])
         env.oldValue = this._value
         env.newValue = newValue
         this._value = newValue
