@@ -40,3 +40,7 @@ const plugin = createBasePlugin(
 ## Function `createInstance<Base, Plugins>(base: new () => Base, plugins: Plugins): MergePlugins<Base, Plugins>`
 
 创建一个 `Base` 基类添加了 `Plugins` 插件后的新类的实例。
+
+## Function `createCtor<Base, Plugins>(base: new () => Base, plugins: Plugins): new () => MergePlugins<Base, Plugins>`
+
+与 `createInstance` 类似，不同的是，它返回一个构造函数而非实例。
