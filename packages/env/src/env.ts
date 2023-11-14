@@ -1,15 +1,15 @@
 import { XPlugin, MergePlugins, createInstance, XCore } from "@ethf/core"
 
-export class Environment extends XCore {}
+export class Env extends XCore {}
 
-export type EnvironmentPlugin<T> = XPlugin<Environment, T>
+export type EnvPlugin<T> = XPlugin<Env, T>
 
-export function createEnvironmentPlugin<T>(plugin: EnvironmentPlugin<T>): EnvironmentPlugin<T> {
+export function createEnvPlugin<T>(plugin: EnvPlugin<T>): EnvPlugin<T> {
     return plugin
 }
 
-export type EnvironmentType<Plugins extends readonly EnvironmentPlugin<any>[]> = MergePlugins<Environment, Plugins>
+export type EnvType<Plugins extends readonly EnvPlugin<any>[]> = MergePlugins<Env, Plugins>
 
-export function createEnvironment<const Plugins extends readonly EnvironmentPlugin<any>[]>(plugins: Plugins): EnvironmentType<Plugins> {
-    return createInstance<Environment, Plugins>(Environment, plugins)
+export function createEnv<const Plugins extends readonly EnvPlugin<any>[]>(plugins: Plugins): EnvType<Plugins> {
+    return createInstance<Env, Plugins>(Env, plugins)
 }
