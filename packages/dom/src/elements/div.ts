@@ -1,20 +1,26 @@
-import { Base } from "./base"
-import { XBoolean } from "@ethf/data"
+import { MergePlugins } from '@ethf/core';
+import { createInstance } from '@ethf/core'
+import { DOM, DOMPlugin } from "./base/dom"
 
-export class Div extends Base {
+export type DivPlugin<T> = DOMPlugin<HTMLParagraphElement, T>
 
-    el: HTMLDivElement
-    visible: XBoolean = new XBoolean(true)
+function createDivPlugin<T>(plugin: DivPlugin<T>): DivPlugin<T> {
+    return plugin
+}
 
-    constructor () {
-        super()
-        this.el = document.createElement('div')
-        this.visible.onChange.bind((_) => {
-            if (_.newValue) {
-                this.el.style.visibility = 'visible'
-            } else {
-                this.el.style.visibility = 'hidden'
-            }
-        })
+const useDiv = createDivPlugin(
+    base => class extends base {
+        constructor () {
+            super()
+            
+            this.el = document.createElement('div')
+            super.delayedInitialize()
+        }
     }
+)
+
+export type Div = MergePlugins<DOM<HTMLDivElement>, [ typeof useDiv ]>
+
+export function createDiv() {
+    return createInstance(DOM<HTMLDivElement>(), [ useDiv ])
 }

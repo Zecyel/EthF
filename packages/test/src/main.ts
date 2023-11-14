@@ -1,17 +1,22 @@
 import * as data from "@ethf/data"
-import { Div, P, appendChild } from "@ethf/dom"
+import { createDiv, createP } from "@ethf/dom"
 
 let a = new data.XNumber(0)
 let b = new data.XNumber(30)
 
 let equ = data.NotEqual(a, b)
 
-let div = new Div()
-let p = new P()
+let div = createDiv()
+let p = createP()
+
+console.log(div)
+
 p.textContent.value = "123"
 p.mount(div)
 
-data.Link(div.visible, equ)
+p.onClick.bind(alert)
+
+data.Link(p.visible, equ)
 
 document.getElementById('root').appendChild(div.el)
 document.getElementById('button').addEventListener('click', () => {

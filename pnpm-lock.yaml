@@ -44,6 +44,9 @@ importers:
 
   packages/dom:
     dependencies:
+      '@ethf/core':
+        specifier: workspace:^
+        version: link:../core
       '@ethf/data':
         specifier: workspace:^
         version: link:../data

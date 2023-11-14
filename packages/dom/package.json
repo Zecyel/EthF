@@ -21,7 +21,8 @@
       "@ethf/env": "workspace:^",
       "@ethf/event-chain": "workspace:^",
       "@ethf/trigger": "workspace:^",
-      "@ethf/data": "workspace:^"
+      "@ethf/data": "workspace:^",
+      "@ethf/core": "workspace:^"
   },
   "license": "MIT"
 }
