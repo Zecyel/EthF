@@ -1,29 +1,15 @@
 import * as data from "@ethf/data"
 import { createButton, createDiv, createP } from "@ethf/dom"
 
-let a = new data.XNumber(0)
-let b = new data.XNumber(30)
+const Xsel = data.XPOD<"aaa" | "bbb">
+type Xsel = data.XPOD<"aaa" | "bbb">
 
-let equ = data.NotEqual(a, b)
+let foo = new Xsel("aaa")
 
-let div = createDiv()
-let p = createP()
-let button = createButton()
-
-p.textContent.value = "123"
-p.mount(div)
-button.mount(div)
-button.textContent.value = "Click me"
-
-p.onClick.bind(alert)
-
-data.Link(p.visible, equ)
-
-button.onClick.bind((_) => {
-    a.value += 10
+foo.onChange.bind((_) => {
+    console.log(_.newValue)
 })
 
-button.addClass('btn')
+foo.value = "aaa" // won't outpot
 
-document.getElementById('root').appendChild(div.el)
-
+foo.value = "bbb"
