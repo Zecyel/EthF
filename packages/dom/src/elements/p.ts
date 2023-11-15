@@ -1,4 +1,4 @@
-import { MergePlugins, createInstance } from '@ethf/core'
+import { MergePlugins, createCtor, createInstance } from '@ethf/core'
 import { DOM, DOMPlugin } from './base/dom'
 
 export type PPlugin<T> = DOMPlugin<HTMLParagraphElement, T>
@@ -19,6 +19,8 @@ const useP = createPPlugin(
 
 export type P = MergePlugins<DOM<HTMLParagraphElement>, [ typeof useP ]>
 
-export function createP() {
+export function createP(): P {
     return createInstance(DOM<HTMLParagraphElement>(), [ useP ])
 }
+
+export const PCtor = createCtor(DOM<HTMLParagraphElement>(), [ useP ])

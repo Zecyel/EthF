@@ -1,4 +1,4 @@
-import { MergePlugins, createInstance } from "@ethf/core"
+import { MergePlugins, createInstance, createCtor } from "@ethf/core"
 import { DOM, DOMPlugin } from "./base"
 
 export type ButtonPlugin<T> = DOMPlugin<HTMLButtonElement, T>
@@ -22,3 +22,5 @@ export type Button = MergePlugins<DOM<HTMLButtonElement>, [ typeof useButton ]>
 export function createButton() {
     return createInstance(DOM<HTMLButtonElement>(), [ useButton ])
 }
+
+export const ButtonCtor = createCtor(DOM<HTMLButtonElement>(), [ useButton ])
