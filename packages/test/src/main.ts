@@ -10,8 +10,6 @@ let div = createDiv()
 let p = createP()
 let button = createButton()
 
-console.log(div)
-
 p.textContent.value = "123"
 p.mount(div)
 button.mount(div)
@@ -24,6 +22,8 @@ data.Link(p.visible, equ)
 button.onClick.bind((_) => {
     a.value += 10
 })
+
+button.addClass('btn')
 
 document.getElementById('root').appendChild(div.el)
 
