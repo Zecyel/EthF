@@ -1,15 +1,11 @@
-import * as data from "@ethf/data"
-import { createButton, createDiv, createP } from "@ethf/dom"
+import * as daisyui from '@ethf/daisyui'
 
-const Xsel = data.XPOD<"aaa" | "bbb">
-type Xsel = data.XPOD<"aaa" | "bbb">
-
-let foo = new Xsel("aaa")
-
-foo.onChange.bind((_) => {
-    console.log(_.newValue)
+let btn = new daisyui.Button()
+btn.textContent.value = 'Hello World'
+// btn.color.value = 'primary'
+btn.onClick.bind((_) => {
+    btn.color.value = 'primary'
+    console.log("123")
 })
 
-foo.value = "aaa" // won't outpot
-
-foo.value = "bbb"
+document.getElementById('root').appendChild(btn.el)

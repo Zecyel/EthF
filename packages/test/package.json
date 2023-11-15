@@ -10,7 +10,8 @@
     "@ethf/data": "workspace:^",
     "@ethf/dom": "workspace:^",
     "ethf": "workspace:^",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "@ethf/daisyui": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",
