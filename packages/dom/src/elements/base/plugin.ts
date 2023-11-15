@@ -1,7 +1,4 @@
-import { useClass } from "./class"
-import { useOnClickDOM } from "./onclick"
-import { useTextContent } from "./textContent"
-import { useVisible } from "./visible"
+import { useOnClickDOM, useVisible, useTextContent, useClass } from "./plugins"
 
 export type Plugins = [
     typeof useOnClickDOM,

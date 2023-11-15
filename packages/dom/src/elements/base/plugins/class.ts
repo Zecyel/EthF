@@ -1,4 +1,4 @@
-import { createDOMBasePlugin } from "./dom"
+import { createDOMBasePlugin } from "../dom"
 
 export const useClass = createDOMBasePlugin(
     base => class extends base {

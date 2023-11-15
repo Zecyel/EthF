@@ -1,5 +1,5 @@
 import { XBoolean } from "@ethf/data"
-import { createDOMBasePlugin } from "./dom"
+import { createDOMBasePlugin } from "../dom"
 
 export const useVisible = createDOMBasePlugin(
     base => class extends base {

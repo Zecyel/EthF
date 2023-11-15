@@ -1,5 +1,5 @@
 import { XString } from "@ethf/data"
-import { createDOMBasePlugin } from "./dom"
+import { createDOMBasePlugin } from "../dom"
 
 export const useTextContent = createDOMBasePlugin(
     base => class extends base {

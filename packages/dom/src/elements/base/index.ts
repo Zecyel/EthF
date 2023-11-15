@@ -1,2 +1,2 @@
 export * from "./dom"
-export * from "./plugins"
+export * from "./plugin"

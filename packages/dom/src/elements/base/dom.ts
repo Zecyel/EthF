@@ -1,6 +1,6 @@
 import { MergePlugins, XCore, XPlugin, createCtor } from "@ethf/core"
 import { OnMountTrigger, createOnMountTrigger } from "../../trigger/mount"
-import { Plugins } from "./plugins"
+import { Plugins } from "./plugin"
 
 export type BaseElementMap = HTMLElementTagNameMap & SVGElementTagNameMap
 

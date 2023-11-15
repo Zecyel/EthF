@@ -1,7 +1,7 @@
 
 import { EnvType, createEnv, createEnvPlugin } from "@ethf/env"
 import { Trigger } from "@ethf/trigger"
-import { createDOMBasePlugin } from "./dom"
+import { createDOMBasePlugin } from "../dom"
 
 export const useOnClickEnv = createEnvPlugin(
     base => class extends base {
