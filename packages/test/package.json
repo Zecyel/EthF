@@ -7,10 +7,15 @@
     "dev": "vite --open"
   },
   "dependencies": {
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0",
-    "ethf": "workspace:^",
     "@ethf/data": "workspace:^",
-    "@ethf/dom": "workspace:^"
+    "@ethf/dom": "workspace:^",
+    "ethf": "workspace:^",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "daisyui": "^4.0.7",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.5.0"
   }
 }
