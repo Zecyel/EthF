@@ -1,6 +1,5 @@
-import { MergePlugins, createInstance } from '@ethf/core';
-import { XString } from '@ethf/data';
-import { DOM, DOMPlugin } from './base/dom';
+import { MergePlugins, createInstance } from '@ethf/core'
+import { DOM, DOMPlugin } from './base/dom'
 
 export type PPlugin<T> = DOMPlugin<HTMLParagraphElement, T>
 
@@ -18,21 +17,8 @@ const useP = createPPlugin(
     }
 )
 
-const usePTextContent = createPPlugin(
-    base => class extends base {
-        textContent: XString = new XString("")
-
-        constructor () {
-            super()
-            this.textContent.onChange.bind((_) => {
-                this.el.textContent = _.newValue
-            })
-        }
-    }
-)
-
-export type P = MergePlugins<DOM<HTMLParagraphElement>, [ typeof usePTextContent, typeof useP ]>
+export type P = MergePlugins<DOM<HTMLParagraphElement>, [ typeof useP ]>
 
 export function createP() {
-    return createInstance(DOM<HTMLParagraphElement>(), [ usePTextContent, useP ])
+    return createInstance(DOM<HTMLParagraphElement>(), [ useP ])
 }

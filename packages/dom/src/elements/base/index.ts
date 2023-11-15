@@ -1,4 +1,4 @@
 export * from "./dom"
-export * from "./onclick"
+// export * from "./onclick"
 export * from "./plugins"
-export * from "./visible"
+// export * from "./visible"
