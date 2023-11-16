@@ -4,7 +4,8 @@ let btn = new daisyui.Button()
 btn.textContent.value = 'Hello World'
 // btn.color.value = 'primary'
 btn.onClick.bind((_) => {
-    btn.color.value = 'primary'
+    btn.status.value = 'success'
+    btn.outlined.value = true
     console.log("123")
 })
 
